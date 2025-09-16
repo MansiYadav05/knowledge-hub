@@ -10,12 +10,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
+
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to bottom right, #3a7d6b, #6abf9f, #a8e6cf);
       color: #333;
       margin: 0;
       padding: 0;
       min-height: 100vh;
+      background: linear-gradient(rgba(58, 125, 107, 0.8),
+          rgba(106, 191, 159, 0.8),
+          rgba(168, 230, 207, 0.8));
+      background-repeat: no-repeat;
     }
 
     .container {
@@ -44,16 +49,62 @@
       position: relative;
     }
 
-    h2::after {
-      content: '';
+    h2.text-center {
+      font-size: 2.5em;
+      text-transform: uppercase;
+      background: linear-gradient(45deg, #2c5f52, #6abf9f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      padding-bottom: 15px;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2.text-center::before {
+      content: "B O O K";
       position: absolute;
-      bottom: -10px;
+      top: -40px;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
+      font-size: 1.5em;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    h2.text-center::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
       height: 3px;
-      background: #2c5f52;
-      border-radius: 2px;
+      background: linear-gradient(90deg,
+          transparent,
+          #2c5f52,
+          #6abf9f,
+          #2c5f52,
+          transparent);
+      border-radius: 3px;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+
+    /* Add hover effect */
+    h2.text-center:hover::after {
+      width: 200px;
+      transition: width 0.3s ease;
     }
 
     .form-label {
